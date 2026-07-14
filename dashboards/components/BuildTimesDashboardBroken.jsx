@@ -316,7 +316,7 @@ const BuildTimesDashboardBroken = () => {
         <div className="search-box">
           <input
             type="text"
-            placeholder="Search builds..."
+            placeholder="Search"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="search-input"
