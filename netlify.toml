@@ -11,7 +11,7 @@
 [build]
   base    = "dashboards"
   command = "npm run build"
-  publish = "dashboards/.next"
+  publish = ".next"
 
 [build.environment]
   NODE_VERSION = "24"
