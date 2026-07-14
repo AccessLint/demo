@@ -319,7 +319,7 @@ const BuildTimesDashboardBroken = () => {
             placeholder="Search builds..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="search-input search-input--builds"
+            className="search-input"
             autoComplete="nope"
           />
         </div>
