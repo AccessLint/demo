@@ -322,6 +322,12 @@ const BuildTimesDashboard = () => {
         </div>
 
         <div className="filters">
+          <select className="search-input" style={{ maxWidth: 180 }}>
+            <option>Priority</option>
+            <option>High</option>
+            <option>Low</option>
+          </select>
+
           <CustomDropdown
             id="status-filter"
             value={statusFilter}
