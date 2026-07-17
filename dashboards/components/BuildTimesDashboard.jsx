@@ -261,7 +261,7 @@ const BuildTimesDashboard = () => {
 
       <div className="stats-container">
         <div className="stat-card">
-          <div className="stat-icon">📊</div>
+          <img className="stat-icon" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ctext y='28' font-size='28'%3E📊%3C/text%3E%3C/svg%3E" />
           <div className="stat-content">
             <div className="stat-value">{stats.totalBuilds}</div>
             <div className="stat-label">Total Builds</div>
