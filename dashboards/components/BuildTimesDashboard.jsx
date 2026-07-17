@@ -253,7 +253,7 @@ const BuildTimesDashboard = () => {
   };
 
   return (
-    <div className="build-times-dashboard">
+    <div className="pipeline-dashboard">
       <header className="dashboard-header">
         <h1>CI Pipeline Build Times</h1>
         <p className="dashboard-subtitle">Monitor and track your continuous integration builds</p>
@@ -310,8 +310,8 @@ const BuildTimesDashboard = () => {
       </div>
 
       {/* Filters and Search */}
-      <div className="controls-container">
-        <div className="search-box">
+      <div className="toolbar">
+        <div className="toolbar-search">
           <input
             type="text"
             placeholder="Search builds..."
@@ -322,6 +322,13 @@ const BuildTimesDashboard = () => {
         </div>
 
         <div className="filters">
+          <select className="search-input" style={{ maxWidth: 180 }}>
+            <option>Environment</option>
+            <option>Production</option>
+            <option>Staging</option>
+            <option>Development</option>
+          </select>
+
           <select className="search-input" style={{ maxWidth: 180 }}>
             <option>Priority</option>
             <option>High</option>
@@ -368,13 +375,14 @@ const BuildTimesDashboard = () => {
       </div>
 
       {/* Builds Table */}
-      <div className="builds-table-container">
+      <div className="history-panel">
         <div className="table-header">
-          <h2>Build History</h2>
+          <h2>Recent builds</h2>
           <div className="results-count">{sortedBuilds.length} results</div>
         </div>
 
-        <table className="builds-table">
+        <div className="table-scroll">
+        <table className="history-table">
           <thead>
             <tr>
               <th></th>
@@ -404,9 +412,9 @@ const BuildTimesDashboard = () => {
                   <td>
                     <div
                       onClick={() => toggleBuildExpansion(build.id)}
-                      className="expand-button"
+                      className="row-toggle"
                     >
-                      {expandedBuild === build.id ? '▼' : '▶'}
+                      {expandedBuild === build.id ? '–' : '+'}
                     </div>
                   </td>
                   <td className="build-id">{build.id}</td>
@@ -459,11 +467,11 @@ const BuildTimesDashboard = () => {
                         </div>
 
                         <div className="detail-section">
-                          <div className="build-actions">
-                            <div className="btn btn-primary btn-sm">View Logs</div>
-                            <div className="btn btn-secondary btn-sm">Retry Build</div>
-                            <div className="btn btn-secondary btn-sm">Download Artifacts</div>
-                            <div className="btn btn-ghost btn-sm">Cancel</div>
+                          <div className="action-bar">
+                            <div className="action-btn action-btn-primary action-btn-sm">Open logs</div>
+                            <div className="action-btn action-btn-secondary action-btn-sm">Re-run build</div>
+                            <div className="action-btn action-btn-secondary action-btn-sm">Artifacts</div>
+                            <div className="action-btn action-btn-ghost action-btn-sm">Cancel</div>
                           </div>
                         </div>
                       </div>
@@ -474,6 +482,7 @@ const BuildTimesDashboard = () => {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   );
