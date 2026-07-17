@@ -270,6 +270,8 @@ const BuildTimesDashboardBroken = () => {
           </div>
         </div>
         <div className="stat-card">
+          {/* Duplicate img-alt: second image missing alt */}
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ctext y='28' font-size='28'%3E✅%3C/text%3E%3C/svg%3E" />
           <div className="stat-content">
             <div className="stat-value" style={{ color: stats.successRate > 80 ? '#38a169' : '#e53e3e' }}>{stats.successRate}%</div>
             <div className="stat-label">Success Rate</div>
@@ -330,6 +332,13 @@ const BuildTimesDashboardBroken = () => {
             <option>Priority</option>
             <option>High</option>
             <option>Low</option>
+          </select>
+
+          {/* Duplicate select-name: second select without label */}
+          <select className="search-input" style={{ maxWidth: 180 }}>
+            <option>Team</option>
+            <option>Platform</option>
+            <option>Infra</option>
           </select>
 
           <CustomDropdown
