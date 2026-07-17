@@ -563,6 +563,12 @@ const BuildTimesDashboardBroken = () => {
 
       {/* RULE: label-placeholder-only — input using placeholder as its only label ===== */}
       <input type="text" placeholder="Filter by author" />
+
+      {/* RULE: tabindex — positive tabindex disrupts tab order ===== */}
+      <div tabIndex="7">Forced tab order</div>
+
+      {/* RULE: select-name — another select without label ===== */}
+      <select><option>Environment</option><option>Prod</option></select>
     </div>
   );
 };
