@@ -561,8 +561,11 @@ const BuildTimesDashboardBroken = () => {
       {/* RULE: link-name — another empty link ===== */}
       <a href="/builds/all"></a>
 
-      {/* RULE: label-placeholder-only — input using placeholder as its only label ===== */}
-      <input type="text" placeholder="Filter by author" />
+      {/* FIXED: input now has an accessible name via aria-label ===== */}
+      <input type="text" aria-label="Filter by author" placeholder="Filter by author" />
+
+      {/* RULE: image-alt-words — alt text starts with redundant "image" ===== */}
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Crect width='24' height='24'/%3E%3C/svg%3E" alt="image of a bar chart" />
 
       {/* RULE: tabindex — positive tabindex disrupts tab order ===== */}
       <div tabIndex="7">Forced tab order</div>
