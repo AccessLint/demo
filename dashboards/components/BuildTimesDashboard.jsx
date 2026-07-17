@@ -323,13 +323,6 @@ const BuildTimesDashboard = () => {
 
         <div className="filters">
           <select className="search-input" style={{ maxWidth: 180 }}>
-            <option>Environment</option>
-            <option>Production</option>
-            <option>Staging</option>
-            <option>Development</option>
-          </select>
-
-          <select className="search-input" style={{ maxWidth: 180 }}>
             <option>Priority</option>
             <option>High</option>
             <option>Low</option>
