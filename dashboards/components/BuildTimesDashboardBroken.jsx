@@ -550,6 +550,19 @@ const BuildTimesDashboardBroken = () => {
           </tbody>
         </table>
       </div>
+
+      {/* ===== More failures ===== */}
+      {/* RULE: img-alt — another image missing alt ===== */}
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Crect fill='%234a5568' width='24' height='24'/%3E%3C/svg%3E" />
+
+      {/* RULE: button-name — another empty button ===== */}
+      <button type="button" className="btn btn-icon"></button>
+
+      {/* RULE: link-name — another empty link ===== */}
+      <a href="/builds/all"></a>
+
+      {/* RULE: label-placeholder-only — input using placeholder as its only label ===== */}
+      <input type="text" placeholder="Filter by author" />
     </div>
   );
 };
