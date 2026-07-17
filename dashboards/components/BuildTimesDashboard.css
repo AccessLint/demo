@@ -1,4 +1,4 @@
-.build-times-dashboard, .pipeline-dashboard {
+.build-times-dashboard {
   max-width: 1400px;
   margin: 0 auto;
   padding: 20px;
@@ -136,7 +136,7 @@
 }
 
 /* Controls - Search and Filters */
-.controls-container, .toolbar {
+.controls-container {
   background: white;
   border: 1px solid #e2e8f0;
   border-radius: 8px;
@@ -149,7 +149,7 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-.search-box, .toolbar-search {
+.search-box {
   flex: 1;
   min-width: 250px;
 }
@@ -273,7 +273,7 @@
 }
 
 /* Builds Table */
-.builds-table-container, .history-panel {
+.builds-table-container {
   background: white;
   border: 1px solid #e2e8f0;
   border-radius: 8px;
@@ -301,17 +301,17 @@
   font-weight: 500;
 }
 
-.builds-table, .history-table {
+.builds-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.builds-table thead, .history-table thead {
+.builds-table thead {
   background-color: #f7fafc;
   border-bottom: 2px solid #e2e8f0;
 }
 
-.builds-table th, .history-table th {
+.builds-table th {
   padding: 12px 16px;
   text-align: left;
   font-weight: 600;
@@ -331,27 +331,27 @@
   color: #4a5568;
 }
 
-.builds-table tbody tr, .history-table tbody tr {
+.builds-table tbody tr {
   border-bottom: 1px solid #e2e8f0;
   transition: background-color 0.2s ease;
 }
 
-.builds-table tbody tr:hover, .history-table tbody tr:hover {
+.builds-table tbody tr:hover {
   background-color: #f7fafc;
 }
 
-.builds-table tbody tr.expanded-row, .history-table tbody tr.expanded-row {
+.builds-table tbody tr.expanded-row {
   background-color: #edf2f7;
 }
 
-.builds-table td, .history-table td {
+.builds-table td {
   padding: 14px 16px;
   color: #2d3748;
   font-size: 14px;
 }
 
 /* Custom Button Styles */
-.btn, .action-btn {
+.btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -367,7 +367,7 @@
   user-select: none;
 }
 
-.btn-icon, .action-btn-icon {
+.btn-icon {
   width: 28px;
   height: 28px;
   padding: 0;
@@ -383,59 +383,59 @@
   user-select: none;
 }
 
-.btn-ghost, .action-btn-ghost {
+.btn-ghost {
   background: transparent;
   border-color: transparent;
   color: #718096;
 }
 
-.btn-ghost:hover, .action-btn-ghost:hover {
+.btn-ghost:hover {
   background: #f7fafc;
   border-color: #e2e8f0;
   color: #2d3748;
 }
 
-.btn-ghost:active, .action-btn-ghost:active {
+.btn-ghost:active {
   background: #edf2f7;
 }
 
-.btn-primary, .action-btn-primary {
+.btn-primary {
   background: #4a5568;
   border-color: #4a5568;
   color: white;
 }
 
-.btn-primary:hover, .action-btn-primary:hover {
+.btn-primary:hover {
   background: #2d3748;
   border-color: #2d3748;
 }
 
-.btn-primary:active, .action-btn-primary:active {
+.btn-primary:active {
   background: #1a202c;
 }
 
-.btn-secondary, .action-btn-secondary {
+.btn-secondary {
   background: #f7fafc;
   border-color: #cbd5e0;
   color: #4a5568;
 }
 
-.btn-secondary:hover, .action-btn-secondary:hover {
+.btn-secondary:hover {
   background: #edf2f7;
   border-color: #a0aec0;
   color: #2d3748;
 }
 
-.btn-secondary:active, .action-btn-secondary:active {
+.btn-secondary:active {
   background: #e2e8f0;
 }
 
-.btn-sm, .action-btn-sm {
+.btn-sm {
   padding: 6px 12px;
   font-size: 12px;
 }
 
-.expand-button, .row-toggle {
+.expand-button {
   background: transparent;
   border: 1px solid transparent;
   color: #718096;
@@ -452,13 +452,13 @@
   user-select: none;
 }
 
-.expand-button:hover, .row-toggle:hover {
+.expand-button:hover {
   background: #f7fafc;
   border-color: #e2e8f0;
   color: #2d3748;
 }
 
-.expand-button:active, .row-toggle:active {
+.expand-button:active {
   background: #edf2f7;
 }
 
@@ -659,7 +659,7 @@
 }
 
 /* Build Actions */
-.build-actions, .action-bar {
+.build-actions {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
@@ -684,11 +684,11 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .builds-table-container, .history-panel {
+  .builds-table-container {
     overflow-x: auto;
   }
 
-  .builds-table, .history-table {
+  .builds-table {
     min-width: 900px;
   }
 
@@ -700,11 +700,11 @@
     font-size: 24px;
   }
 
-  .controls-container, .toolbar {
+  .controls-container {
     flex-direction: column;
   }
 
-  .search-box, .toolbar-search {
+  .search-box {
     width: 100%;
   }
 
