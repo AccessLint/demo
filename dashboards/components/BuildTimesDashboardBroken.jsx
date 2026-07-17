@@ -254,9 +254,9 @@ const BuildTimesDashboardBroken = () => {
 
       {/* ===== RULE: img-alt — image missing alt ===== */}
       {/* ===== RULE: image-redundant-alt — alt contains "image" ===== */}
-      <div className="stats-container">
+      <div className="stats-container" data-testid="stats">
         <div className="stat-card">
-          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ctext y='28' font-size='28'%3E📊%3C/text%3E%3C/svg%3E" />
+          <span className="stat-icon-wrap"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ctext y='28' font-size='28'%3E📊%3C/text%3E%3C/svg%3E" /></span>
           <div className="stat-content">
             <div className="stat-value">{stats.totalBuilds}</div>
             <div className="stat-label">Total Builds</div>
@@ -315,13 +315,14 @@ const BuildTimesDashboardBroken = () => {
       {/* ===== RULE: select-name — select without label ===== */}
       {/* ===== RULE: autocomplete-valid — invalid autocomplete value ===== */}
       <div className="controls-container">
-        <div className="search-box">
+        <div className="search-box search-box--main" data-testid="search-box">
           <input
             type="text"
+            data-testid="build-search"
             placeholder="Search builds..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="search-input"
+            className="search-input search-input--filter"
             autoComplete="nope"
           />
         </div>
@@ -438,7 +439,7 @@ const BuildTimesDashboardBroken = () => {
 
       {/* ===== RULE: td-headers-attr — cell referencing invalid header id ===== */}
       {/* ===== RULE: th-has-data-cells — header with no data cells ===== */}
-      <div className="builds-table-container">
+      <div className="builds-table-container" data-testid="builds-table">
         <div className="table-header">
           <h2>Build History</h2>
           <div className="results-count">{sortedBuilds.length} results</div>
