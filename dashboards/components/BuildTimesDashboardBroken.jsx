@@ -3,6 +3,24 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import './BuildTimesDashboard.css';
 
+// Deterministic PRNG (mulberry32) so this fixture's mock data — and the
+// content fingerprint of every violation on it — is identical across every
+// render. This page exists to be diffed against (accessibility scanners,
+// AccessLint Flows), not to look "live"; Math.random() here made every run
+// see different commits/durations/statuses and get diffed as all-new.
+const MOCK_DATA_SEED = 0x5eed1050;
+
+function mulberry32(seed) {
+  let state = seed;
+  return function random() {
+    state |= 0;
+    state = (state + 0x6d2b79f5) | 0;
+    let t = Math.imul(state ^ (state >>> 15), 1 | state);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
 const BuildTimesDashboardBroken = () => {
   const [allBuilds, setAllBuilds] = useState([]);
   const [expandedBuild, setExpandedBuild] = useState(null);
@@ -17,9 +35,10 @@ const BuildTimesDashboardBroken = () => {
     const branches = ['main', 'develop', 'feature/auth', 'feature/dashboard', 'hotfix/bug-123'];
     const statuses = ['success', 'failed', 'running'];
     const statusWeights = [0.7, 0.2, 0.1];
+    const random = mulberry32(MOCK_DATA_SEED);
 
     const mockBuilds = Array.from({ length: 50 }, (_, i) => {
-      const rand = Math.random();
+      const rand = random();
       let status = statuses[0];
       if (rand > statusWeights[0] && rand <= statusWeights[0] + statusWeights[1]) {
         status = statuses[1];
@@ -29,32 +48,32 @@ const BuildTimesDashboardBroken = () => {
 
       const buildTime = status === 'running'
         ? null
-        : Math.floor(Math.random() * 600) + 120;
+        : Math.floor(random() * 600) + 120;
 
       const timestamp = new Date(Date.now() - i * 3600000);
-      const branch = branches[Math.floor(Math.random() * branches.length)];
+      const branch = branches[Math.floor(random() * branches.length)];
 
       return {
         id: `build-${1050 - i}`,
         branch,
-        commit: Math.random().toString(36).substring(2, 9),
+        commit: random().toString(36).substring(2, 9),
         status,
         buildTime,
         timestamp,
-        triggeredBy: ['alice', 'bob', 'charlie', 'CI'][Math.floor(Math.random() * 4)],
+        triggeredBy: ['alice', 'bob', 'charlie', 'CI'][Math.floor(random() * 4)],
         tests: {
-          passed: status === 'success' ? Math.floor(Math.random() * 50) + 150 : Math.floor(Math.random() * 150),
-          failed: status === 'failed' ? Math.floor(Math.random() * 10) + 1 : 0,
-          skipped: Math.floor(Math.random() * 5)
+          passed: status === 'success' ? Math.floor(random() * 50) + 150 : Math.floor(random() * 150),
+          failed: status === 'failed' ? Math.floor(random() * 10) + 1 : 0,
+          skipped: Math.floor(random() * 5)
         },
         stages: [
-          { name: 'Checkout', duration: Math.floor(Math.random() * 10) + 5, status: 'success' },
-          { name: 'Install Dependencies', duration: Math.floor(Math.random() * 60) + 30, status: status === 'failed' && Math.random() > 0.5 ? 'failed' : 'success' },
-          { name: 'Build', duration: Math.floor(Math.random() * 120) + 60, status: status === 'failed' && Math.random() > 0.3 ? 'failed' : 'success' },
-          { name: 'Test', duration: Math.floor(Math.random() * 180) + 60, status: status === 'failed' ? 'failed' : 'success' },
-          { name: 'Deploy', duration: Math.floor(Math.random() * 30) + 10, status: status === 'running' ? 'running' : status }
+          { name: 'Checkout', duration: Math.floor(random() * 10) + 5, status: 'success' },
+          { name: 'Install Dependencies', duration: Math.floor(random() * 60) + 30, status: status === 'failed' && random() > 0.5 ? 'failed' : 'success' },
+          { name: 'Build', duration: Math.floor(random() * 120) + 60, status: status === 'failed' && random() > 0.3 ? 'failed' : 'success' },
+          { name: 'Test', duration: Math.floor(random() * 180) + 60, status: status === 'failed' ? 'failed' : 'success' },
+          { name: 'Deploy', duration: Math.floor(random() * 30) + 10, status: status === 'running' ? 'running' : status }
         ],
-        message: `${['feat', 'fix', 'chore', 'refactor'][Math.floor(Math.random() * 4)]}: ${['update dependencies', 'fix login bug', 'improve performance', 'add new feature'][Math.floor(Math.random() * 4)]}`
+        message: `${['feat', 'fix', 'chore', 'refactor'][Math.floor(random() * 4)]}: ${['update dependencies', 'fix login bug', 'improve performance', 'add new feature'][Math.floor(random() * 4)]}`
       };
     });
 
